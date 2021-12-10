@@ -74,5 +74,25 @@ public class PrefixSum {
     }
     return -1;
  }
+
+ public long[] rangeSum(int[] A, int[][] B) {
+    int[] prefixSum= new int[A.length];
+    prefixSum[0]=A[0];
+
+    long[] result = new long[B.length];
+    
+    for(int i=1;i<A.length;i++){
+        prefixSum[i]=prefixSum[i-1]+ A[i];
+    }
+
+    for(int i=0;i<B.length;i++){
+        if(B[i][0]==1)
+        result[i]=prefixSum[B[i][1]-1];
+        else
+        result[i]=prefixSum[B[i][1]-1]-prefixSum[B[i][0]-2];
+    }
+
+    return result;
+}
     
 }
