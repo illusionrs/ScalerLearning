@@ -39,4 +39,35 @@ public class SubArray {
         }
         return index;
     }
+
+    public int maxSubarraySumLessThanK(int A, int B, int[] C) {
+        int n=A;
+        int[] prefixSum = new int[n];
+        prefixSum[0]=C[0];
+
+        for(int i=1;i<C.length;i++)
+        prefixSum[i]=prefixSum[i-1]+C[i];
+
+        int maxSum=0;
+
+        for(int i=0;i<n;i++){
+            if(i==0 && prefixSum[i]<=B){
+                maxSum=Math.max(maxSum,prefixSum[i]);
+                continue;
+            }
+            if(i==0)
+            continue;
+
+            if(prefixSum[i]<=B){
+                maxSum=Math.max(prefixSum[i],maxSum);
+            }
+            if((prefixSum[n-1]-prefixSum[i-1])<=B)
+            maxSum=Math.max(maxSum,prefixSum[n-1]-prefixSum[i-1]);
+
+            
+        }
+        
+
+        return maxSum;
+    }
 }
