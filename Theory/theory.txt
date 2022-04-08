@@ -1,0 +1,6 @@
+/**
+Goldbach conjecture, in number theory, assertion (here stated in modern
+ terms) that every even counting number greater than 2 is equal to the 
+ sum of two prime numbers.
+
+ /**
